@@ -1,0 +1,16 @@
+{
+  "frontend/src/App.tsx": "Main application component that handles authentication flow, user profile setup dialog, and renders the mobile scaffold with tasks page when authenticated.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for all backend operations including user profile management and task CRUD operations (create, read, update, delete, toggle completion) with proper cache invalidation and error handling.",
+  "frontend/src/components/layout/MobileScaffold.tsx": "Reusable mobile-first layout component with sticky header showing app icon and user menu, scrollable content area, and footer with attribution.",
+  "frontend/src/pages/TasksPage.tsx": "Main tasks page component that manages filter and sort state, renders task list with controls, and provides a floating action button with sheet for creating new tasks.",
+  "frontend/src/features/tasks/components/TaskList.tsx": "Task list component that displays filtered and sorted tasks with loading states, error handling, and empty state with illustration.",
+  "frontend/src/features/tasks/components/TaskRow.tsx": "Individual task row component with checkbox for completion toggle, tap-to-view-details, and dropdown menu for edit/delete actions.",
+  "frontend/src/features/tasks/components/TaskComposer.tsx": "Form component for creating new tasks with title (required, max 80 chars) and optional description fields.",
+  "frontend/src/features/tasks/components/TaskDetailsSheet.tsx": "Bottom sheet displaying full task details with status badge and action buttons for editing and deleting.",
+  "frontend/src/features/tasks/components/TaskEditSheet.tsx": "Bottom sheet with form for editing existing tasks, pre-filled with current task data.",
+  "frontend/src/features/tasks/components/DeleteTaskConfirmDialog.tsx": "Alert dialog for confirming task deletion with loading state during deletion.",
+  "frontend/src/features/tasks/components/TaskListControls.tsx": "Control bar with tabs for filtering (All/Active/Done) and select dropdown for sorting (Newest/Oldest First).",
+  "frontend/src/index.css": "Global styles with warm coral/orange OKLCH color system for both light and dark modes, custom scrollbar styles, and mobile touch target improvements.",
+  "frontend/index.html": "HTML entry point with mobile-optimized meta tags, theme color, favicon, and apple-touch-icon references to generated app icon.",
+  "frontend/tailwind.config.js": "Tailwind configuration with extended color tokens, custom shadows, optimized border radius, and mobile-first container settings."
+}

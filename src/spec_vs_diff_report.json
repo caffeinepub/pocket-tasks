@@ -1,0 +1,78 @@
+{
+  "kind": "spec_vs_diff_report",
+  "version": "1.0",
+  "generatedAt": "2026-02-17T03:50:49.005Z",
+  "summary": "Implements a mobile-oriented task manager with authentication (Internet Identity), task CRUD UI (create/list/details/edit/delete), completion toggle, filtering and sorting controls, and references to generated images for app icon and empty state. However, the requested bottom navigation is not evidenced, and backend task persistence/upgrade-safe stable storage is not evidenced in the provided backend diff (tasks stored in an in-memory Map with a non-stable counter shown). The diff also introduces additional, unrequested user-profile and access-control/admin-token functionality.",
+  "missing_requirements": [
+    {
+      "id": "REQ-1",
+      "requirement": "Create a mobile-first task manager UI with an accessible layout including a bottom navigation (or equivalent compact navigation) and touch-friendly controls.",
+      "reason": "The layout shown includes a sticky header and a footer attribution, but no bottom navigation (tabs/nav bar) is evidenced anywhere in the scaffold/pages provided.",
+      "evidence": [
+        "frontend/src/components/layout/MobileScaffold.tsx",
+        "frontend/src/pages/TasksPage.tsx"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Persist tasks in the Motoko backend with upgrade-safe handling (stable storage patterns).",
+      "reason": "The backend shows tasks stored in a non-stable in-memory Map and a non-stable `nextTaskId` counter; no stable variables or preupgrade/postupgrade persistence patterns are visible in the provided/truncated backend excerpt.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "User profile setup and profile CRUD (save/get caller profile) with a mandatory onboarding dialog asking for the user's name.",
+      "reason": "The BuildRequest focuses on task management; it does not request user profile features or onboarding flows beyond Internet Identity authentication.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/App.tsx",
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "description": "Custom authorization/access-control system with admin token initialization via URL parameter.",
+      "reason": "The BuildRequest only constrains authentication providers (Internet Identity) and backend shape; it does not request additional role/permission systems or admin secret-token flows.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useActor.ts",
+        "frontend/src/utils/urlParams.ts"
+      ]
+    },
+    {
+      "description": "Footer attribution/link to caffeine.ai (including 'Built with ❤️').",
+      "reason": "Not requested in requirements or acceptance criteria for the task manager UI.",
+      "evidence": [
+        "frontend/src/components/layout/MobileScaffold.tsx"
+      ]
+    }
+  ],
+  "confidence": 0.68,
+  "changed_files": [
+    "all_files_summary.json",
+    "backend/main.mo",
+    "frontend-file-summaries.txt",
+    "frontend/index.css",
+    "frontend/index.html",
+    "frontend/src/App.tsx",
+    "frontend/src/components/layout/MobileScaffold.tsx",
+    "frontend/src/features/tasks/components/DeleteTaskConfirmDialog.tsx",
+    "frontend/src/features/tasks/components/TaskComposer.tsx",
+    "frontend/src/features/tasks/components/TaskDetailsSheet.tsx",
+    "frontend/src/features/tasks/components/TaskEditSheet.tsx",
+    "frontend/src/features/tasks/components/TaskList.tsx",
+    "frontend/src/features/tasks/components/TaskListControls.tsx",
+    "frontend/src/features/tasks/components/TaskRow.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/hooks/useQueries.ts",
+    "frontend/src/index.css",
+    "frontend/src/main.tsx",
+    "frontend/src/pages/TasksPage.tsx",
+    "frontend/src/utils/urlParams.ts",
+    "frontend/tailwind.config.js",
+    "project_state.json"
+  ]
+}

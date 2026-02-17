@@ -1,0 +1,145 @@
+{
+  "kind": "build_request",
+  "title": "Mobile-Friendly Task Manager App",
+  "projectName": "Pocket Tasks",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a mobile-first task manager UI that works well on phone screens, including an accessible layout with a bottom navigation (or equivalent compact navigation) and touch-friendly controls.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I need a task manager app that works on phone with good user interface"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Primary screens are usable on common mobile widths (e.g., ~360px) without horizontal scrolling.",
+        "Interactive elements (buttons, inputs, list items) are touch-friendly and have clear hover/active/focus states.",
+        "App layout remains usable on larger screens (tablet/desktop) via responsive design."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Implement core task CRUD features: create tasks, view task list, view task details, edit tasks, and delete tasks.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I need a task manager app that works on phone with good user interface"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Users can add a task with at least: title (required), optional description.",
+        "Users can edit an existing task and see changes reflected immediately in the list.",
+        "Users can delete a task and it is removed from the list after confirmation.",
+        "A task details view (or expandable row) shows the full task information."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add task organization and productivity controls: task completion toggle, basic filtering (All / Active / Completed), and sorting (e.g., newest first, or by due date if present).",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I need a task manager app that works on phone with good user interface"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Each task can be marked completed/uncompleted.",
+        "Users can filter the list by All, Active, Completed.",
+        "Users can change the sort order and the list updates accordingly."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Persist tasks in the Motoko backend so that tasks remain available after page refresh and canister upgrade safe handling is considered (use stable storage patterns as needed).",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "I need a task manager app that works on phone with good user interface"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Tasks persist across page reloads.",
+        "Backend exposes clear methods for listing, creating, updating, and deleting tasks.",
+        "State is stored in a way that is compatible with canister upgrades (stable variables / stable data approach)."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Provide a polished, coherent visual theme for the app (colors, typography, spacing, and component styling) suitable for a modern mobile task manager, and apply it consistently across all screens.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "good user interface"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A consistent design system is evident across list items, forms, headers, and navigation.",
+        "Typography and spacing improve readability on small screens.",
+        "Do not use a blue+purple theme unless explicitly required by the user."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Generate and include custom static images used by the UI (stored under frontend/public/assets/generated) and render them in the app where appropriate (e.g., app icon, empty state).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "good user interface"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Generated images are saved under frontend/public/assets/generated and referenced directly by the frontend.",
+        "At least one empty-state visual is shown when there are no tasks.",
+        "An app icon is included and used in the UI (e.g., header/favicon usage as feasible within the template)."
+      ]
+    }
+  ],
+  "constraints": [
+    "Backend must remain a single Motoko actor (no additional backend services).",
+    "Do not modify files under frontend/src/components/ui or other immutable paths; compose them instead.",
+    "Use English for all user-facing text."
+  ],
+  "nonGoals": [
+    "Real-time collaboration or chat features.",
+    "Third-party authentication providers beyond Internet Identity.",
+    "External database integration (e.g., PostgreSQL/MongoDB).",
+    "Push notifications, SMS, or email reminders."
+  ],
+  "imageRequirements": {
+    "required": [
+      "Minimal task checklist app icon, flat illustration (app-icon.dim_512x512.png)",
+      "Empty state illustration showing an empty task list on a phone screen, clean modern style (empty-state-tasks.dim_1200x800.png)"
+    ],
+    "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
+  }
+}

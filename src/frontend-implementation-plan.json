@@ -1,0 +1,178 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Pocket Tasks — Mobile-Friendly Task Manager (Frontend)",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Build a mobile-first, accessible layout with bottom navigation and touch-friendly controls.",
+      "acceptanceCriteria": [
+        "Primary screens are usable on common mobile widths (e.g., ~360px) without horizontal scrolling.",
+        "Interactive elements (buttons, inputs, list items) are touch-friendly and have clear hover/active/focus states.",
+        "App layout remains usable on larger screens (tablet/desktop) via responsive design."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "create",
+          "description": "Create the main app shell with a mobile-first layout (safe-area padding, sticky header, bottom navigation) and accessible focus management. Use shadcn-ui components (e.g., Button, Tabs/Navigation, Dialog/Sheet) for consistent interactions; verify the component's usage instructions before implementing. Ensure navigation works well on touch devices and remains responsive on larger screens."
+        },
+        {
+          "path": "frontend/src/components/layout/MobileScaffold.tsx",
+          "operation": "create",
+          "description": "Add a reusable scaffold component that provides an accessible header area, scrollable content region, and bottom navigation optimized for mobile. Use shadcn-ui primitives where appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/navigation/BottomNav.tsx",
+          "operation": "create",
+          "description": "Implement a compact bottom navigation component with large tap targets, clear active states, and keyboard accessibility. Use shadcn-ui Button (or equivalent) to standardize focus/active styling; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Implement task CRUD in the UI: create, list, view details, edit, and delete tasks.",
+      "acceptanceCriteria": [
+        "Users can add a task with at least: title (required), optional description.",
+        "Users can edit an existing task and see changes reflected immediately in the list.",
+        "Users can delete a task and it is removed from the list after confirmation.",
+        "A task details view (or expandable row) shows the full task information."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/tasks/hooks/useTasks.ts",
+          "operation": "create",
+          "description": "Create React Query hooks to load and mutate tasks via the backend actor (list, create, edit, delete, get details). Include cache invalidation and optimistic UI where safe. Handle authorization failures gracefully by surfacing a user-friendly message and clearing cached task data on logout. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/TaskComposer.tsx",
+          "operation": "create",
+          "description": "Create a mobile-friendly task create form (title required, description optional) with accessible labels, validation, and touch-friendly controls. Use shadcn-ui Input/Textarea/Button and form feedback patterns; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/TaskList.tsx",
+          "operation": "create",
+          "description": "Render the task list with touch-friendly rows, clear hierarchy, and states for loading/error/empty. Each row should support opening a details view and quick actions (edit/delete). Use shadcn-ui Card/Separator/Button (and optional skeleton patterns) for consistent styling; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/TaskDetailsSheet.tsx",
+          "operation": "create",
+          "description": "Implement a task details view as a mobile-appropriate overlay (sheet/dialog) showing full task info, with actions to edit and delete. Use shadcn-ui Dialog/Sheet and AlertDialog for confirmation; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/TaskEditSheet.tsx",
+          "operation": "create",
+          "description": "Add an edit form presented as a sheet/dialog, prefilled with task data, saving updates and reflecting changes immediately in the list. Use shadcn-ui Input/Textarea/Button; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/DeleteTaskConfirmDialog.tsx",
+          "operation": "create",
+          "description": "Add a delete confirmation dialog to prevent accidental deletions. Use shadcn-ui AlertDialog for accessible confirmation UX; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire task CRUD screens/components into the main navigation: show a Tasks screen with list + create entry point; ensure task details, edit, and delete flows are reachable (no orphan components). Also ensure the app requires login before showing any task data per the authorization component guidance; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add completion toggle, filtering (All/Active/Completed), and sorting controls to the task list.",
+      "acceptanceCriteria": [
+        "Each task can be marked completed/uncompleted.",
+        "Users can filter the list by All, Active, Completed.",
+        "Users can change the sort order and the list updates accordingly."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/features/tasks/components/TaskListControls.tsx",
+          "operation": "create",
+          "description": "Add a compact, mobile-first controls bar for filter (All/Active/Completed) and sort selection (e.g., newest first). Use shadcn-ui Tabs/Segmented controls and Select where appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/TaskRow.tsx",
+          "operation": "create",
+          "description": "Implement a task row with an accessible completion toggle (checkbox/switch), title/preview, and touch-friendly actions. Use shadcn-ui Checkbox/Button for consistent states; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/hooks/useTasks.ts",
+          "operation": "modify",
+          "description": "Extend hooks to support completion toggling mutations and efficient refetch/invalidation. Provide helper selectors for filtering/sorting on the client while leveraging available backend reads when appropriate. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/TaskList.tsx",
+          "operation": "modify",
+          "description": "Wire filtering/sorting state and completion toggle into the list rendering so the UI updates immediately when users change controls or toggle completion. Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Create and apply a cohesive modern visual theme (not blue+purple) across all screens.",
+      "acceptanceCriteria": [
+        "A consistent design system is evident across list items, forms, headers, and navigation.",
+        "Typography and spacing improve readability on small screens.",
+        "Do not use a blue+purple theme unless explicitly required by the user."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/index.css",
+          "operation": "create",
+          "description": "Define global theme tokens and base styles (typography, spacing rhythm, focus rings, surface/background) using Tailwind + shadcn-ui conventions, ensuring a cohesive modern palette that avoids blue+purple. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Adjust Tailwind theme extensions (if needed) to support the chosen non-blue+purple brand palette and consistent radii/shadows for a modern mobile task manager look."
+        },
+        {
+          "path": "frontend/src/components/layout/MobileScaffold.tsx",
+          "operation": "modify",
+          "description": "Apply consistent spacing, typography, and navigation styling across header/content/bottom nav to reflect the unified design system. Use shadcn-ui components where appropriate; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/TaskList.tsx",
+          "operation": "modify",
+          "description": "Align task list visuals (row density, type scale, separators, states) with the global theme for readability on small screens. Use shadcn-ui building blocks; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Include generated static images (app icon + empty state) and render them in the UI.",
+      "acceptanceCriteria": [
+        "Generated images are saved under frontend/public/assets/generated and referenced directly by the frontend.",
+        "At least one empty-state visual is shown when there are no tasks.",
+        "An app icon is included and used in the UI (e.g., header/favicon usage as feasible within the template)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/app-icon.dim_512x512.png",
+          "operation": "create",
+          "description": "Add the generated app icon asset at frontend/public/assets/generated/app-icon.dim_512x512.png and ensure it is referenced directly by the frontend."
+        },
+        {
+          "path": "frontend/public/assets/generated/empty-state-tasks.dim_1200x800.png",
+          "operation": "create",
+          "description": "Add the generated empty state illustration at frontend/public/assets/generated/empty-state-tasks.dim_1200x800.png and ensure it is referenced directly by the frontend."
+        },
+        {
+          "path": "frontend/index.html",
+          "operation": "modify",
+          "description": "Wire the app icon as the favicon (or equivalent) by referencing frontend/public/assets/generated/app-icon.dim_512x512.png."
+        },
+        {
+          "path": "frontend/src/features/tasks/components/TaskList.tsx",
+          "operation": "modify",
+          "description": "Render an empty-state panel when there are no tasks, including the static image frontend/public/assets/generated/empty-state-tasks.dim_1200x800.png plus English explanatory text and a clear call-to-action to create a task. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/layout/MobileScaffold.tsx",
+          "operation": "modify",
+          "description": "Display the app icon in the UI (e.g., header brand mark) using frontend/public/assets/generated/app-icon.dim_512x512.png. Verify the component's usage instructions before implementing."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,126 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --radius: 0.75rem;
+        
+        /* Warm coral/orange palette for light mode */
+        --background: 0.99 0 0;
+        --foreground: 0.15 0 0;
+        --card: 1 0 0;
+        --card-foreground: 0.15 0 0;
+        --popover: 1 0 0;
+        --popover-foreground: 0.15 0 0;
+        
+        /* Primary: Vibrant coral */
+        --primary: 0.62 0.19 25;
+        --primary-foreground: 0.99 0 0;
+        
+        /* Secondary: Soft peach */
+        --secondary: 0.95 0.03 45;
+        --secondary-foreground: 0.25 0 0;
+        
+        /* Muted: Warm gray */
+        --muted: 0.96 0.01 45;
+        --muted-foreground: 0.50 0.02 45;
+        
+        /* Accent: Energetic orange */
+        --accent: 0.75 0.15 40;
+        --accent-foreground: 0.15 0 0;
+        
+        /* Destructive: Red */
+        --destructive: 0.55 0.22 25;
+        --destructive-foreground: 0.99 0 0;
+        
+        /* Borders and inputs */
+        --border: 0.90 0.01 45;
+        --input: 0.90 0.01 45;
+        --ring: 0.62 0.19 25;
+        
+        /* Chart colors */
+        --chart-1: 0.62 0.19 25;
+        --chart-2: 0.75 0.15 40;
+        --chart-3: 0.68 0.17 35;
+        --chart-4: 0.55 0.22 25;
+        --chart-5: 0.80 0.12 50;
+    }
+
+    .dark {
+        --background: 0.12 0 0;
+        --foreground: 0.98 0 0;
+        --card: 0.16 0 0;
+        --card-foreground: 0.98 0 0;
+        --popover: 0.18 0 0;
+        --popover-foreground: 0.98 0 0;
+        
+        /* Primary: Bright coral for dark mode */
+        --primary: 0.70 0.18 25;
+        --primary-foreground: 0.12 0 0;
+        
+        /* Secondary: Muted warm */
+        --secondary: 0.22 0.02 45;
+        --secondary-foreground: 0.98 0 0;
+        
+        /* Muted: Dark warm gray */
+        --muted: 0.20 0.01 45;
+        --muted-foreground: 0.65 0.02 45;
+        
+        /* Accent: Vibrant orange */
+        --accent: 0.65 0.16 40;
+        --accent-foreground: 0.98 0 0;
+        
+        /* Destructive: Bright red */
+        --destructive: 0.60 0.20 25;
+        --destructive-foreground: 0.12 0 0;
+        
+        /* Borders and inputs */
+        --border: 0.25 0.01 45;
+        --input: 0.25 0.01 45;
+        --ring: 0.70 0.18 25;
+        
+        /* Chart colors for dark mode */
+        --chart-1: 0.70 0.18 25;
+        --chart-2: 0.75 0.15 40;
+        --chart-3: 0.68 0.17 35;
+        --chart-4: 0.60 0.20 25;
+        --chart-5: 0.80 0.12 50;
+    }
+
+    * {
+        @apply border-border;
+    }
+    
+    body {
+        @apply bg-background text-foreground;
+        font-feature-settings: "rlig" 1, "calt" 1;
+    }
+    
+    /* Improve touch targets on mobile */
+    @media (pointer: coarse) {
+        button, a, input, textarea, select {
+            @apply min-h-[44px];
+        }
+    }
+}
+
+@layer utilities {
+    /* Custom scrollbar for webkit browsers */
+    .scrollbar-thin::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-thumb {
+        @apply bg-border rounded-full;
+    }
+    
+    .scrollbar-thin::-webkit-scrollbar-thumb:hover {
+        @apply bg-muted-foreground/50;
+    }
+}

@@ -1,0 +1,113 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-create-a-mobile-first-task-manager-ui-that-works-well-on-phone-screens-including-an-accessible-layout-with-a-bottom-navigation-or-equivalent-compact-navigation-and-touch-friendly-controls",
+      "featureTitle": "Create a mobile-first task manager UI that works well on phone screens, including an accessible layout with a bottom navigation (or equivalent compact navigation) and touch-friendly controls.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/layout/MobileScaffold.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-core-task-crud-features-create-tasks-view-task-list-view-task-details-edit-tasks-and-delete-tasks",
+      "featureTitle": "Implement core task CRUD features: create tasks, view task list, view task details, edit tasks, and delete tasks.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/features/tasks/components/DeleteTaskConfirmDialog.tsx",
+        "frontend/src/features/tasks/components/TaskComposer.tsx",
+        "frontend/src/features/tasks/components/TaskDetailsSheet.tsx",
+        "frontend/src/features/tasks/components/TaskEditSheet.tsx",
+        "frontend/src/features/tasks/components/TaskList.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-task-organization-and-productivity-controls-task-completion-toggle-basic-filtering-all-active-completed-and-sorting-e-g-newest-first-or-by-due-date-if-present",
+      "featureTitle": "Add task organization and productivity controls: task completion toggle, basic filtering (All / Active / Completed), and sorting (e.g., newest first, or by due date if present).",
+      "files": [
+        "frontend/src/features/tasks/components/TaskList.tsx",
+        "frontend/src/features/tasks/components/TaskListControls.tsx",
+        "frontend/src/features/tasks/components/TaskRow.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-provide-a-polished-coherent-visual-theme-for-the-app-colors-typography-spacing-and-component-styling-suitable-for-a-modern-mobile-task-manager-and-apply-it-consistently-across-all-screens",
+      "featureTitle": "Provide a polished, coherent visual theme for the app (colors, typography, spacing, and component styling) suitable for a modern mobile task manager, and apply it consistently across all screens.",
+      "files": [
+        "frontend/src/components/layout/MobileScaffold.tsx",
+        "frontend/src/features/tasks/components/TaskList.tsx",
+        "frontend/src/index.css",
+        "frontend/tailwind.config.js"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-generate-and-include-custom-static-images-used-by-the-ui-stored-under-frontend-public-assets-generated-and-render-them-in-the-app-where-appropriate-e-g-app-icon-empty-state",
+      "featureTitle": "Generate and include custom static images used by the UI (stored under frontend/public/assets/generated) and render them in the app where appropriate (e.g., app icon, empty state).",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/layout/MobileScaffold.tsx",
+        "frontend/src/features/tasks/components/TaskList.tsx"
+      ],
+      "components": [
+        "authorization@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
